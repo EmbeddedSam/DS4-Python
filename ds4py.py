@@ -1,36 +1,6 @@
 import pygame
 
 ##this code was just adapted from the standard example on the pygame joystick page, TODO:REMOVE TEXTPRINT PYGAME STUFF AND ADD ANALOGUES
-
-# Define some colors
-BLACK    = (   0,   0,   0)
-WHITE    = ( 255, 255, 255)
-
-# This is a simple class that will help us print to the screen
-# It has nothing to do with the joysticks, just outputing the
-# information.
-class TextPrint:
-    def __init__(self):
-        self.reset()
-        self.font = pygame.font.Font(None, 20)
-
-    def printt(self, screen, textString):
-        textBitmap = self.font.render(textString, True, BLACK)
-        screen.blit(textBitmap, [self.x, self.y])
-        self.y += self.line_height
-        
-    def reset(self):
-        self.x = 10
-        self.y = 10
-        self.line_height = 15
-        
-    def indent(self):
-        self.x += 10
-        
-    def unindent(self):
-        self.x -= 10
-    
-
 pygame.init()
  
 # Set the width and height of the screen [width,height]
@@ -145,62 +115,59 @@ while done==False:
     screen.fill(WHITE)
     textPrint.reset()
 
-    # Get count of joysticks
-    joystick_count = pygame.joystick.get_count()
+    # # Get count of joysticks
+    # joystick_count = pygame.joystick.get_count()
 
-    textPrint.printt(screen, "Number of joysticks: {}".format(joystick_count) )
-    textPrint.indent()
+    # textPrint.printt(screen, "Number of joysticks: {}".format(joystick_count) )
+    # textPrint.indent()
     
-    # For each joystick:
-    for i in range(joystick_count):
-        joystick = pygame.joystick.Joystick(i)
-        joystick.init()
+    # # For each joystick:
+    # for i in range(joystick_count):
+    #     joystick = pygame.joystick.Joystick(i)
+    #     joystick.init()
     
-        textPrint.printt(screen, "Joystick {}".format(i) )
-        textPrint.indent()
-    
-        # Get the name from the OS for the controller/joystick
-        name = joystick.get_name()
-        textPrint.printt(screen, "Joystick name: {}".format(name) )
+    #     # Get the name from the OS for the controller/joystick
+    #     name = joystick.get_name()
+    #     textPrint.printt(screen, "Joystick name: {}".format(name) )
         
-        # Usually axis run in pairs, up/down for one, and left/right for
-        # the other.
-        axes = joystick.get_numaxes()
-        textPrint.printt(screen, "Number of axes: {}".format(axes) )
-        textPrint.indent()
+    #     # Usually axis run in pairs, up/down for one, and left/right for
+    #     # the other.
+    #     axes = joystick.get_numaxes()
+    #     textPrint.printt(screen, "Number of axes: {}".format(axes) )
+    #     textPrint.indent()
         
-        for i in range( axes ):
-            axis = joystick.get_axis( i )
-            textPrint.printt(screen, "Axis {} value: {:>6.3f}".format(i, axis) )
-        textPrint.unindent()
+    #     for i in range( axes ):
+    #         axis = joystick.get_axis( i )
+    #         textPrint.printt(screen, "Axis {} value: {:>6.3f}".format(i, axis) )
+    #     textPrint.unindent()
             
-        buttons = joystick.get_numbuttons()
-        textPrint.printt(screen, "Number of buttons: {}".format(buttons) )
-        textPrint.indent()
+    #     buttons = joystick.get_numbuttons()
+    #     textPrint.printt(screen, "Number of buttons: {}".format(buttons) )
+    #     textPrint.indent()
 
-        for i in range( buttons ):
-            button = joystick.get_button( i )
-            textPrint.printt(screen, "Button {:>2} value: {}".format(i,button) )
-        textPrint.unindent()
+    #     for i in range( buttons ):
+    #         button = joystick.get_button( i )
+    #         textPrint.printt(screen, "Button {:>2} value: {}".format(i,button) )
+    #     textPrint.unindent()
             
-        # Hat switch. All or nothing for direction, not like joysticks.
-        # Value comes back in an array.
-        hats = joystick.get_numhats()
-        textPrint.printt(screen, "Number of hats: {}".format(hats) )
-        textPrint.indent()
+    #     # Hat switch. All or nothing for direction, not like joysticks.
+    #     # Value comes back in an array.
+    #     hats = joystick.get_numhats()
+    #     textPrint.printt(screen, "Number of hats: {}".format(hats) )
+    #     textPrint.indent()
 
-        for i in range( hats ):
-            hat = joystick.get_hat( i )
-           # print("Hat {} value: {}".format(i, str(hat)) )
-        textPrint.unindent()
+    #     for i in range( hats ):
+    #         hat = joystick.get_hat( i )
+    #        # print("Hat {} value: {}".format(i, str(hat)) )
+    #     textPrint.unindent()
         
-        textPrint.unindent()
+    #     textPrint.unindent()
 
     
-    # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+    # # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
     
-    # Go ahead and update the screen with what we've drawn.
-    pygame.display.flip()
+    # # Go ahead and update the screen with what we've drawn.
+    # pygame.display.flip()
 
     # Limit to 20 frames per second
     clock.tick(20)
